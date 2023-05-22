@@ -36,8 +36,8 @@ app.get("/api/hello", function (req, res) {
 
 // we will display the date as DD-MM-YYYY 
 
-let currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
-var timestamp = new Date().getTime();
+// let currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
+// var timestamp = new Date().getTime();
 //console.log(timestamp)
 
 app.get("/api", (req, res) => {
