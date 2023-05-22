@@ -26,24 +26,23 @@ app.get("/api/hello", function (req, res) {
 
 
 // Date object
-// const date = new Date();
+const date = new Date();
 
-// let currentDay= String(date.getDate()).padStart(2, '0');
+let currentDay= String(date.getDate()).padStart(2, '0');
 
-// let currentMonth = String(date.getMonth()+1).padStart(2,"0");
+let currentMonth = String(date.getMonth()+1).padStart(2,"0");
 
-// let currentYear = date.getFullYear();
+let currentYear = date.getFullYear();
 
 // we will display the date as DD-MM-YYYY 
 
-// let currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
-// var timestamp = new Date().getTime();
+let currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
+var timestamp = new Date().getTime();
 //console.log(timestamp)
 
 app.get("/api", (req, res) => {
-  const dateObject = new Date();
-
-  let date = dateObject.toUTCString();
+  var timestamp = new Date().getTime();
+  let date = new Date().toUTCString();
   res.json({unix: timestamp, utc: date })
 });
 
@@ -54,8 +53,8 @@ app.get("/api/:date", (req, res) => {
 
 
   
-  const date = parseInt(date_in_endpoint) < 999999 ? new Date(date_in_endpoint):new Date(parseInt(date_in_endpoint));//one condition for date, and the other for timestamp(which are passed as endpoints)
-  //console.log(date)
+  const date = parseInt(date_in_endpoint) < 999999 ? new Date(date_in_endpoint):new Date(parseInt(date_in_endpoint));
+  console.log(date)
   date.toString() === "Invalid Date"? res.json({ error: "Invalid Date" }) : res.json({ unix: date.valueOf(), utc: date.toUTCString() });
 });
 
