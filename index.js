@@ -46,15 +46,17 @@ app.get("/api", (req, res) => {
   res.json({unix: timestamp, utc: date })
 });
 
-app.get("/api/:date", (req, res) => {
+app.get("/api/:date?", (req, res) => {
   const date_in_endpoint = req.params.date;
   // console.log(date_in_endpoint)
   // console.log(parseInt(date_in_endpoint));
+  const date = parseInt(date_in_endpoint) < 99999 ? new Date(date_in_endpoint):new Date(parseInt(date_in_endpoint));
 
+  // var myArray = date_in_endpoint.split("-");
+  // console.log(myArray.length)
 
-  
-  const date = parseInt(date_in_endpoint) < 999999 ? new Date(date_in_endpoint):new Date(parseInt(date_in_endpoint));
-  console.log(date)
+  // const date = myArray.length == 3 ? new Date(date_in_endpoint):new Date(parseInt(date_in_endpoint));
+  // console.log(date)
   date.toString() === "Invalid Date"? res.json({ error: "Invalid Date" }) : res.json({ unix: date.valueOf(), utc: date.toUTCString() });
 });
 
